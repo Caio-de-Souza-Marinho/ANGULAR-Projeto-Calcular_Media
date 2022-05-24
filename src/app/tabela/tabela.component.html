@@ -1,1 +1,50 @@
-<p>tabela works!</p>
+<h1 class="d-flex p-4 justify-content-center">Tabela de notas</h1>
+
+<div class="d-flex p-4 justify-content-center">
+  <div style="padding-right: 17px;">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">RM</th>
+          <th scope="col">NOME</th>
+          <th scope="col">NOTA 1</th>
+          <th scope="col">NOTA 2</th>
+          <th scope="col">NOTA 3</th>
+          <th scope="col">NOTA 4</th>
+          <th scope="col">MÉDIA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{ codigoRMA }}</th>
+          <td>{{ nome | uppercase }}</td>
+          <td>{{ nota1 | number: "2.1-2" }}</td>
+          <td>{{ nota2 | number: "2.1-2" }}</td>
+          <td>{{ nota3 | number: "2.1-2" }}</td>
+          <td>{{ nota4 | number: "2.1-2" }}</td>
+          <td>{{ media | number: "2.1-2" }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="media >= 7; else elseBlock">
+      <span class="d-flex badge badge-success justify-content-center"
+        >Aprovado</span
+      >
+    </div>
+    <ng-template #elseBlock>
+      <span class="d-flex badge badge-danger justify-content-center"
+        >Reprovado</span
+      >
+    </ng-template>
+  </div>
+
+  <div class="card" style="width: 10rem">
+    <img [src]="imagem" />
+    <div class="card-body">
+      <h5 class="card-title">Data de matrícula</h5>
+      <p class="card-text">{{ data | date: "dd/MM/yyyy" }}</p>
+      <a href="#" class="btn btn-primary">Ver Perfil</a>
+    </div>
+  </div>
+</div>
